@@ -1,0 +1,21 @@
+Name,Status,PatternReason,RecentRuns,WatchFlags,ConcernFlags,LowWaveFlags,MissedDeployFlags,CurrentRisk,CurrentReason,CurrentScore,RecentAvgScore,PreviousAvgScore,ScoreChangePct,CurrentExpectedRatio,CurrentWaves,CurrentMissed
+Iceman2781,Watch,"current baseline: missed deploy",1,1,1,0,1,Red,"missed deploy",0.775879379249862,0.775879379249862,NaN,NaN,1.34096636226534,88,1
+Fleshstorm,Watch,"current baseline: missed deploy",1,1,1,0,1,Red,"missed deploy",0.61848152792886,0.61848152792886,NaN,NaN,1.07689647976851,71,1
+Xandei Ω,Watch,"current baseline: low platoons",1,1,1,0,0,Red,"low platoons",0.608227108599693,0.608227108599693,NaN,NaN,1.21903680697026,60,0
+EmperorArteta,Watch,"current baseline: missed deploy",1,1,1,0,1,Red,"missed deploy",0.578881835261779,0.578881835261779,NaN,NaN,0.856323614131403,52,1
+3ATM3,Watch,"current baseline: acceptable activity, below expected GP",1,1,1,0,0,Amber,"acceptable activity, below expected GP",0.525091985419601,0.525091985419601,NaN,NaN,0.889176317553197,42,0
+Pickle,Watch,"current baseline: low platoons",1,1,1,0,0,Red,"low platoons",0.52222817424862,0.52222817424862,NaN,NaN,1.50025335153813,53,0
+The Great Cornholio,Watch,"current baseline: low waves",1,1,1,1,0,Red,"low waves",0.474920197333763,0.474920197333763,NaN,NaN,0.986641343990744,39,0
+peregrine7,Watch,"current baseline: low platoons",1,1,1,0,0,Red,"low platoons",0.469234715161811,0.469234715161811,NaN,NaN,1.58090528249718,43,0
+ThePassifier,Watch,"current baseline: acceptable activity, below expected GP",1,1,1,0,0,Amber,"acceptable activity, below expected GP",0.466832339559574,0.466832339559574,NaN,NaN,0.778604495495974,40,0
+ZKylo Jiuter,Watch,"current baseline: low waves",1,1,1,1,0,Red,"low waves",0.462918568636801,0.462918568636801,NaN,NaN,0.8233610990355,30,0
+Aserius,Watch,"current baseline: acceptable activity, below expected GP",1,1,1,0,0,Amber,"acceptable activity, below expected GP",0.460298368120121,0.460298368120121,NaN,NaN,0.862423177452293,42,0
+Calaveylon Kwai,Watch,"current baseline: missed deploy",1,1,1,0,1,Red,"missed deploy",0.446792959908212,0.446792959908212,NaN,NaN,0.990291125664345,43,1
+Jacyn Amme,Watch,"current baseline: low waves",1,1,1,1,0,Red,"low waves",0.432781322621052,0.432781322621052,NaN,NaN,0.746333994844681,25,0
+spudgun187 ren,Watch,"current baseline: missed deploy",1,1,1,0,1,Red,"missed deploy",0.423758241467605,0.423758241467605,NaN,NaN,0.808251099084072,45,1
+kernowjg,Watch,"current baseline: missed deploy, low waves, low platoons",1,1,1,1,1,Red,"missed deploy, low waves, low platoons",0.410250389374769,0.410250389374769,NaN,NaN,0.78563517765695,30,1
+Certified Taco Lover,Watch,"current baseline: missed deploy, low waves, low platoons",1,1,1,1,1,Red,"missed deploy, low waves, low platoons",0.394285847545377,0.394285847545377,NaN,NaN,0.833182539028505,34,1
+SausageMcGee,Watch,"current baseline: missed deploy, low waves",1,1,1,1,1,Red,"missed deploy, low waves",0.371889319183702,0.371889319183702,NaN,NaN,0.676278806232036,24,1
+JAYBIRD,Watch,"current baseline: low waves",1,1,1,1,0,Red,"low waves",0.367697567659485,0.367697567659485,NaN,NaN,0.625153101062591,11,0
+Anci,Watch,"current baseline: missed deploy, low waves",1,1,1,1,1,Red,"missed deploy, low waves",0.315683010618548,0.315683010618548,NaN,NaN,0.682895327416683,24,1
+Varatalin,Watch,"current baseline: low waves, low platoons",1,1,1,1,0,Red,"low waves, low platoons",0.287572561983829,0.287572561983829,NaN,NaN,0.983817319689957,12,0
