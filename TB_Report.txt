@@ -1,7 +1,7 @@
-﻿OANR Territory Battle Officer Report
-===================================
+﻿OANR Territory Battle Report
+============================
 
-Date: 2026-05-31 19:26
+Date: 2026-05-31 21:47
 Players analysed: 50
 Phases detected: [1 2 3 4 5 6]
 Phases analysed: [2 3 4 5 6]
@@ -20,31 +20,31 @@ Raw score scaling:
 
 Traffic-Light Summary
 ---------------------
-Green: 25
-Amber: 6
-Red:   19
+Green: 30
+Amber: 3
+Red:   17
 
-Highest-Priority Follow-Ups
----------------------------
+Activity Watchlist
+------------------
 Name                  RiskGroup   RiskReason                              FollowUpPriority  MissedDeployments  TotalCombatWaves  PlatoonUnits  RogueActions  ExpectedRatio  
 kernowjg              Red         missed deploy, low waves, low platoons  6                 1                  30                2             0             0.786          
 Certified Taco Lover  Red         missed deploy, low waves, low platoons  6                 1                  34                0             0             0.833          
 SausageMcGee          Red         missed deploy, low waves                5                 1                  24                16            0             0.676          
-Anci                  Red         missed deploy, low waves                5                 2                  24                17            0             0.683          
-spudgun187 ren        Red         missed deploy, rogue actions            4                 2                  45                13            2             0.808          
-Iceman2781            Red         missed deploy, rogue actions            4                 1                  88                35            5             1.341          
-ThePassifier          Red         missed deploy                           3                 1                  40                10            0             0.779          
-ZKylo Jiuter          Red         low waves, rogue actions                3                 0                  30                9             2             0.823          
+Anci                  Red         missed deploy, low waves                5                 1                  24                17            0             0.683          
+spudgun187 ren        Red         missed deploy                           3                 1                  45                13            2             0.808          
 EmperorArteta         Red         missed deploy                           3                 1                  52                44            0             0.856          
-Aserius               Red         missed deploy                           3                 1                  42                22            1             0.862          
 Varatalin             Red         low waves, low platoons                 3                 0                  12                4             0             0.984          
 Calaveylon Kwai       Red         missed deploy                           3                 1                  43                5             0             0.990          
 Fleshstorm            Red         missed deploy                           3                 1                  71                10            0             1.077          
+Iceman2781            Red         missed deploy                           3                 1                  88                35            5             1.341          
 JAYBIRD               Red         low waves                               2                 0                  11                20            0             0.625          
 Jacyn Amme            Red         low waves                               2                 0                  25                17            0             0.746          
+ZKylo Jiuter          Red         low waves                               2                 0                  30                9             2             0.823          
 The Great Cornholio   Red         low waves                               2                 0                  39                5             0             0.987          
+ThePassifier          Amber       acceptable activity, below expected GP  1                 0                  40                10            0             0.779          
+Aserius               Amber       acceptable activity, below expected GP  1                 0                  42                22            1             0.862          
 3ATM3                 Amber       acceptable activity, below expected GP  1                 0                  42                6             0             0.889          
-Holycrabe             Amber       rogue actions                           1                 0                  49                41            4             0.954          
+Xandei Ω              Red         low platoons                            1                 0                  60                1             1             1.219          
 
 Top Contributors
 ----------------
@@ -53,8 +53,8 @@ Locohoco         Green       0.931              102592400             105       
 Din Al           Green       0.928              101894701             89                131           1             15507627    
 Banshajn         Green       0.848              98881225              92                26            1             13873525    
 Dulce Periculum  Green       0.805              97899932              82                31            0             14249784    
-Opus             Amber       0.784              96808631              72                66            2             14982799    
-TigerMan         Amber       0.777              96024141              77                34            6             14205752    
+Opus             Green       0.784              96808631              72                66            2             14982799    
+TigerMan         Green       0.777              96024141              77                34            6             14205752    
 Iceman2781       Red         0.776              84814041              88                35            5             13290892    
 Taero            Green       0.773              93783549              83                8             0             13892447    
 Cameron2394      Green       0.755              88394099              70                88            0             13880479    
@@ -72,7 +72,7 @@ kernowjg              Red         0.410              63869980              30   
 spudgun187 ren        Red         0.424              50379123              45                13            2             12683484    
 Jacyn Amme            Red         0.433              71281511              25                17            0             13298336    
 Calaveylon Kwai       Red         0.447              58977054              43                5             0             11843309    
-Aserius               Red         0.460              60074570              42                22            1             12703109    
+Aserius               Amber       0.460              60074570              42                22            1             12703109    
 
 Best Power Efficiency
 ---------------------
@@ -83,7 +83,7 @@ Iceman2781         Red         13.002           172.814               1.341     
 Taero              Green       12.725           176.784               1.266          13892447    
 Dulce Periculum    Green       12.625           179.900               1.232          14249784    
 Din Al             Green       12.310           190.895               1.133          15507627    
-TigerMan           Amber       12.180           173.024               1.191          14205752    
+TigerMan           Green       12.180           173.024               1.191          14205752    
 Talyn Stormborn    Green       11.866           159.690               1.211          13457712    
 Dimes and Pennies  Green       11.699           159.327               1.182          13619351    
 FollowerofRevan    Green       11.563           167.206               1.116          14460592    
@@ -95,6 +95,8 @@ Locohoco           solid contributor, above expected GP  102592400             1
 Din Al             solid contributor, above expected GP  101894701             89                131           1             1.133          
 Banshajn           solid contributor, above expected GP  98881225              92                26            1             1.370          
 Dulce Periculum    solid contributor, above expected GP  97899932              82                31            0             1.232          
+Opus               solid contributor, above expected GP  96808631              72                66            2             1.061          
+TigerMan           solid contributor, above expected GP  96024141              77                34            6             1.191          
 Taero              solid contributor, above expected GP  93783549              83                8             0             1.266          
 Cameron2394        solid contributor, above expected GP  88394099              70                88            0             1.136          
 Talyn Stormborn    solid contributor, above expected GP  88689759              71                70            1             1.211          
@@ -108,8 +110,11 @@ TickTock           solid contributor, above expected GP  87978610              6
 Obo Nâm            solid contributor                     79150814              52                92            0             1.025          
 EtA Mr Bodia       solid contributor, above expected GP  79001861              64                24            1             1.250          
 Delaraex           solid contributor, above expected GP  80231703              62                20            0             1.134          
+Custardman         solid contributor, above expected GP  84015753              58                7             3             1.096          
 Nick               solid contributor                     80330109              49                62            0             1.002          
 cheeks             solid contributor                     80884812              54                30            0             0.976          
+Azz01              solid contributor                     82317175              54                18            4             1.028          
+Holycrabe          solid contributor                     80052487              49                41            4             0.954          
 eddiebrock         solid contributor, above expected GP  77113582              56                7             0             1.312          
 Everton Jabb       solid contributor, above expected GP  74764941              57                9             0             1.182          
 FØAL               solid contributor                     78164780              49                33            1             0.992          
@@ -119,32 +124,27 @@ Trojan             solid contributor, above expected GP  66615346              4
 
 Amber Group - Acceptable but Below Expected GP
 ----------------------------------------------
-Name        RiskReason                              TotalTerritoryPoints  TotalCombatWaves  PlatoonUnits  RogueActions  ExpectedRatio  
-3ATM3       acceptable activity, below expected GP  77630947              42                6             0             0.889          
-Holycrabe   rogue actions                           80052487              49                41            4             0.954          
-Azz01       rogue actions                           82317175              54                18            4             1.028          
-Opus        rogue actions                           96808631              72                66            2             1.061          
-Custardman  rogue actions                           84015753              58                7             3             1.096          
-TigerMan    rogue actions                           96024141              77                34            6             1.191          
+Name          RiskReason                              TotalTerritoryPoints  TotalCombatWaves  PlatoonUnits  RogueActions  ExpectedRatio  
+ThePassifier  acceptable activity, below expected GP  65606741              40                10            0             0.779          
+Aserius       acceptable activity, below expected GP  60074570              42                22            1             0.862          
+3ATM3         acceptable activity, below expected GP  77630947              42                6             0             0.889          
 
 Red Group - Missed Deploy / Low Waves / Low Platoons
 ----------------------------------------------------
 Name                  RiskReason                              FollowUpPriority  MissedDeployments  TotalTerritoryPoints  TotalCombatWaves  PlatoonUnits  RogueActions  
 Certified Taco Lover  missed deploy, low waves, low platoons  6                 1                  56670118              34                0             0             
 kernowjg              missed deploy, low waves, low platoons  6                 1                  63869980              30                2             0             
-Anci                  missed deploy, low waves                5                 2                  45562144              24                17            0             
+Anci                  missed deploy, low waves                5                 1                  45562144              24                17            0             
 SausageMcGee          missed deploy, low waves                5                 1                  58550266              24                16            0             
-spudgun187 ren        missed deploy, rogue actions            4                 2                  50379123              45                13            2             
-Iceman2781            missed deploy, rogue actions            4                 1                  84814041              88                35            5             
+spudgun187 ren        missed deploy                           3                 1                  50379123              45                13            2             
 Calaveylon Kwai       missed deploy                           3                 1                  58977054              43                5             0             
-Aserius               missed deploy                           3                 1                  60074570              42                22            1             
-ThePassifier          missed deploy                           3                 1                  65606741              40                10            0             
 EmperorArteta         missed deploy                           3                 1                  73510169              52                44            0             
 Fleshstorm            missed deploy                           3                 1                  69891010              71                10            0             
+Iceman2781            missed deploy                           3                 1                  84814041              88                35            5             
 Varatalin             low waves, low platoons                 3                 0                  53140710              12                4             0             
-ZKylo Jiuter          low waves, rogue actions                3                 0                  74659205              30                9             2             
 JAYBIRD               low waves                               2                 0                  69600402              11                20            0             
 Jacyn Amme            low waves                               2                 0                  71281511              25                17            0             
+ZKylo Jiuter          low waves                               2                 0                  74659205              30                9             2             
 The Great Cornholio   low waves                               2                 0                  69297871              39                5             0             
 peregrine7            low platoons                            1                 0                  64441461              43                3             0             
 Pickle                low platoons                            1                 0                  66578337              53                4             1             
