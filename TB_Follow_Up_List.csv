@@ -1,24 +1,26 @@
 Name,RiskGroup,RiskReason,FollowUpPriority,MissedDeployments,TotalCombatWaves,PlatoonUnits,RogueActions,ExpectedRatio,TotalPower
-kernowjg,Red,"missed deploy, low waves, low platoons",6,1,25,2,0,0.716821339313253,12765999
-Certified Taco Lover,Red,"missed deploy, low waves, low platoons",6,1,31,0,0,0.797445534012697,12170156
-Anci,Red,"missed deploy, low waves",5,2,20,17,0,0.597291780759255,11781076
-SausageMcGee,Red,"missed deploy, low waves",5,1,21,16,0,0.632941447316036,12910362
-spudgun187 ren,Red,"missed deploy, rogue actions",4,1,45,13,2,0.949562876936693,12683484
-Iceman2781,Red,"missed deploy, rogue actions",4,1,78,34,5,1.3089218524723,13290892
-ThePassifier,Red,"missed deploy",3,1,37,10,0,0.755910821302379,13668953
-ZKylo Jiuter,Red,"low waves, rogue actions",3,0,25,9,2,0.776090756046908,13192474
-EmperorArteta,Red,"missed deploy",3,1,43,44,0,0.777697910900125,14280091
-Aserius,Red,"missed deploy",3,1,38,22,0,0.835520932113037,12703109
-Varatalin,Red,"low waves, low platoons",3,0,11,4,0,0.920564654668662,9788164
-Calaveylon Kwai,Red,"missed deploy",3,1,40,5,0,0.968639134762948,11843309
-JAYBIRD,Red,"low waves",2,0,11,20,0,0.614736559064139,13294039
-Jacyn Amme,Red,"low waves",2,0,25,17,0,0.757432245827181,13298336
-3ATM3,Amber,"acceptable activity, below expected GP",1,0,39,6,0,0.894311452648616,13607764
-Holycrabe,Amber,"rogue actions",1,0,47,41,4,0.973572292587471,13649686
-Azz01,Amber,"rogue actions",1,0,52,18,4,1.05911824468356,13497096
-Opus,Amber,"rogue actions",1,0,67,66,2,1.07366122794863,14982799
-Custardman,Amber,"rogue actions",1,0,53,7,3,1.08485165000178,13327227
-TigerMan,Amber,"rogue actions",1,0,70,34,6,1.19269598186618,14205752
-Xandei Ω,Red,"low platoons",1,0,58,0,1,1.25800061924131,12500639
-Pickle,Red,"low platoons",1,0,50,4,1,1.51584654512221,10542436
-peregrine7,Red,"low platoons",1,0,40,3,0,1.55174321884193,9885977
+kernowjg,Red,"missed deploy, low waves, low platoons",6,1,30,2,0,0.78563517765695,12765999
+Certified Taco Lover,Red,"missed deploy, low waves, low platoons",6,1,34,0,0,0.833182539028505,12170156
+SausageMcGee,Red,"missed deploy, low waves",5,1,24,16,0,0.676278806232036,12910362
+Anci,Red,"missed deploy, low waves",5,2,24,17,0,0.682895327416683,11781076
+spudgun187 ren,Red,"missed deploy, rogue actions",4,2,45,13,2,0.808251099084072,12683484
+Iceman2781,Red,"missed deploy, rogue actions",4,1,88,35,5,1.34096636226534,13290892
+ThePassifier,Red,"missed deploy",3,1,40,10,0,0.778604495495974,13668953
+ZKylo Jiuter,Red,"low waves, rogue actions",3,0,30,9,2,0.8233610990355,13192474
+EmperorArteta,Red,"missed deploy",3,1,52,44,0,0.856323614131403,14280091
+Aserius,Red,"missed deploy",3,1,42,22,1,0.862423177452293,12703109
+Varatalin,Red,"low waves, low platoons",3,0,12,4,0,0.983817319689957,9788164
+Calaveylon Kwai,Red,"missed deploy",3,1,43,5,0,0.990291125664345,11843309
+Fleshstorm,Red,"missed deploy",3,1,71,10,0,1.07689647976851,13400335
+JAYBIRD,Red,"low waves",2,0,11,20,0,0.625153101062591,13294039
+Jacyn Amme,Red,"low waves",2,0,25,17,0,0.746333994844681,13298336
+The Great Cornholio,Red,"low waves",2,0,39,5,0,0.986641343990744,12222721
+3ATM3,Amber,"acceptable activity, below expected GP",1,0,42,6,0,0.889176317553197,13607764
+Holycrabe,Amber,"rogue actions",1,0,49,41,4,0.953886382402289,13649686
+Azz01,Amber,"rogue actions",1,0,54,18,4,1.02833108316705,13497096
+Opus,Amber,"rogue actions",1,0,72,66,2,1.06075940895892,14982799
+Custardman,Amber,"rogue actions",1,0,58,7,3,1.0964540098604,13327227
+TigerMan,Amber,"rogue actions",1,0,77,34,6,1.19130828495245,14205752
+Xandei Ω,Red,"low platoons",1,0,60,1,1,1.21903680697026,12500639
+Pickle,Red,"low platoons",1,0,53,4,1,1.50025335153813,10542436
+peregrine7,Red,"low platoons",1,0,43,3,0,1.58090528249718,9885977
