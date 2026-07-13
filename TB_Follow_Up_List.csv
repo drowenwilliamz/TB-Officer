@@ -1,40 +1,19 @@
 Name,RiskGroup,RiskReason,FollowUpPriority,MissedDeployments,TotalCombatWaves,PlatoonUnits,RogueActions,ExpectedRatio,TotalPower
-SausageMcGee,Red,"missed deploy, low waves, low platoons",6,1,35,2,0,1.00104714038082,13105039
-Glove,Red,"missed deploy, low waves",5,1,0,41,0,0.514430219883746,13099186
-Azz01,Red,"missed deploy, low waves",5,1,22,15,5,0.720360380473958,13826015
-3ATM3,Red,"missed deploy, low waves",5,1,19,7,0,0.739643811311752,13867946
-Fleshstorm,Red,"missed deploy, low waves",5,1,29,11,2,0.913239219211323,13621253
-Certified Taco Lover,Red,"low waves, low platoons",3,0,24,0,2,1.07133531278957,12384384
-Calaveylon Kwai,Red,"low waves, low platoons",3,0,32,4,1,1.21372585549195,12059815
-peregrine7,Red,"low waves, low platoons",3,0,22,0,0,1.2554806109727,10072025
-Jacyn Amme,Red,"low waves",2,0,1,12,0,0.554459170530799,13584916
-FØAL,Red,"low waves",2,0,16,40,0,0.742804489204825,13510813
-Obo Nâm,Red,"low waves",2,0,16,46,0,0.830827769036491,13473570
-spudgun187 ren,Red,"low waves",2,0,14,13,0,0.878553192735532,13006512
-ZKylo Jiuter,Red,"low waves",2,0,19,8,0,0.920281837974512,13418141
-Aserius,Red,"low waves",2,0,22,62,0,0.953952334770968,13112117
-JAYBIRD,Red,"low waves",2,0,26,56,1,0.977769634136459,13581113
-Chelli,Red,"low waves",2,0,23,42,3,0.980876687207247,13978131
-TickTock,Red,"low waves",2,0,25,11,0,0.981207216928791,13727937
-Nick,Red,"low waves",2,0,22,14,4,0.983391232300271,13553746
-Delaraex,Red,"low waves",2,0,25,40,0,0.98371919422856,13365643
-HedaLeia,Red,"low waves",2,0,28,14,1,0.992395755292109,13397510
-ThePassifier,Red,"low waves",2,0,29,8,0,0.998942616395555,13917863
-Opus,Red,"low waves",2,0,31,46,0,1.01849658797562,15177359
-DarthVenatus,Red,"low waves",2,0,31,35,8,1.02311948994034,13922798
-kernowjg,Red,"low waves",2,0,25,29,0,1.02460583902395,12998264
-FollowerofRevan,Red,"low waves",2,0,30,11,2,1.03517689267008,14644462
-DarthShuka,Red,"low waves",2,0,22,14,0,1.0383831039384,12048463
-Trojan,Red,"low waves",2,0,19,15,1,1.05051380941951,11516858
-Holycrabe,Red,"low waves",2,0,29,40,3,1.05834908546691,14000404
-The Great Cornholio,Red,"low waves",2,0,28,8,1,1.06730501180921,12552748
-cheeks,Red,"low waves",2,0,36,8,0,1.08184180058771,14109882
-Preece,Red,"low waves",2,0,34,46,4,1.08268971639901,14744118
-Talyn Stormborn,Red,"low waves",2,0,34,56,0,1.13205588809991,13570424
-Dulce Periculum,Red,"low waves",2,0,38,33,0,1.13260963321946,14543442
-Cameron2394,Red,"low waves",2,0,38,37,2,1.14620577894944,14048525
-Custardman,Red,"low waves",2,0,37,14,0,1.14957961233588,13607181
-Anci,Red,"low waves",2,0,27,19,1,1.16286339244848,11827010
-eddiebrock,Red,"low waves",2,0,30,5,0,1.16382873398396,12019398
-Everton Jabb,Red,"low waves",2,0,32,7,0,1.19184235978303,12420258
-Chrindall,Red,"low waves",2,0,6,106,1,1.27546201650399,7283257
+Glove,Red,"missed deploy, low waves",5,1,2,41,0,0.458712027906691,13099186
+Azz01,Red,"missed deploy, low waves",5,1,34,15,5,0.708821134041663,13826015
+3ATM3,Red,"missed deploy, low waves",5,1,30,7,0,0.716915989384981,13867946
+SausageMcGee,Red,"missed deploy, low platoons",4,1,40,2,0,0.901951042761628,13105039
+Fleshstorm,Red,"missed deploy",3,1,54,11,2,0.980572201439758,13621253
+peregrine7,Red,"low waves, low platoons",3,0,33,0,0,1.26653298115311,10072025
+Jacyn Amme,Red,"low waves",2,0,16,12,0,0.594535908425867,13584916
+FØAL,Red,"low waves",2,0,28,40,0,0.732800308456642,13510813
+Obo Nâm,Red,"low waves",2,0,19,46,0,0.735729653938786,13473570
+ZKylo Jiuter,Red,"low waves",2,0,32,8,0,0.894473789218091,13418141
+spudgun187 ren,Red,"low waves",2,0,31,13,0,0.900808561630156,13006512
+Aserius,Red,"low waves",2,0,38,62,0,0.954576654478054,13112117
+kernowjg,Red,"low waves",2,0,34,29,0,0.957841950644799,12998264
+Nick,Red,"low waves",2,0,39,14,4,0.978203703877779,13553746
+DarthShuka,Red,"low waves",2,0,36,14,0,1.03630218831895,12048463
+Chrindall,Red,"low waves",2,0,8,106,1,1.32434402549852,7283257
+Certified Taco Lover,Red,"low platoons",1,0,43,0,2,1.10212819239211,12384384
+Calaveylon Kwai,Red,"low platoons",1,0,50,4,1,1.22678437471057,12059815
