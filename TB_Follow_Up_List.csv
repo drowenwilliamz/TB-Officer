@@ -1,20 +1,21 @@
 Name,RiskGroup,RiskReason,FollowUpPriority,MissedDeployments,TotalCombatWaves,PlatoonUnits,RogueActions,ExpectedRatio,TotalPower
-FollowerofRevan,Red,"missed deploy, low waves, low platoons",6,1,0,0,0,0,14662061
-Glove,Red,"low waves, low platoons",3,0,0,4,0,0.233923007133464,13194263
-The Great Cornholio,Red,"low waves, low platoons",3,0,0,0,0,0.465946873648669,12607961
-Lannavo,Red,"low waves, low platoons",3,0,8,2,0,0.618135304212064,13395162
-Chelli,Red,"missed deploy",3,1,23,21,0,0.695711806061039,14163547
-spudgun187 ren,Red,"low waves",2,0,0,23,0,0.461731171230123,13070066
-Anci,Amber,"acceptable activity, below expected GP",1,0,17,8,4,0.65816055523167,11839622
-HedaLeia,Red,"low platoons",1,0,20,1,0,0.660903818678857,13520483
-3ATM3,Red,"low platoons",1,0,30,0,0,1.039865815653,13955508
-ThePassifier,Red,"low platoons",1,0,32,2,0,1.07861532897135,13962034
-Custardman,Red,"low platoons",1,0,33,0,0,1.12972982157025,13665159
-Certified Taco Lover,Red,"low platoons",1,0,32,2,0,1.18632663093942,12425507
-eddiebrock,Red,"low platoons",1,0,30,1,1,1.18988855519095,12040097
-Taero,Red,"low platoons",1,0,39,0,0,1.1956039578843,14306025
-EtA Mr Bodia,Red,"low platoons",1,0,34,1,0,1.22099021490272,12739795
-peregrine7,Red,"low platoons",1,0,25,0,0,1.23111803360639,10276408
-Trojan,Red,"low platoons",1,0,31,1,0,1.23557277101161,11671502
-Calaveylon Kwai,Red,"low platoons",1,0,34,1,0,1.27366383018645,12114258
-Iceman2781,Red,"low platoons",1,0,49,4,9,1.48582537354322,13462730
+FollowerofRevan,Red,"missed deploy, low waves, low platoons",6,3,0,0,0,0.102659664467422,14662061
+Jacyn Amme,Red,"missed deploy, low waves",5,1,28,13,1,0.680921203558545,13637845
+kernowjg,Red,"missed deploy, low waves",5,2,38,21,0,0.711040181877895,13040605
+The Great Cornholio,Red,"low waves, low platoons",3,0,0,0,0,0.542761656705565,12607961
+Lannavo,Red,"low waves, low platoons",3,0,17,2,0,0.698575301003138,13395162
+3ATM3,Red,"missed deploy",3,1,42,5,0,0.801782663256633,13955508
+Chelli,Red,"missed deploy",3,2,52,30,0,0.82796360826263,14163547
+Holycrabe,Red,"missed deploy",3,1,52,62,4,0.899931121922016,14089864
+Custardman,Red,"missed deploy",3,1,52,7,0,0.944762616954574,13665159
+EmperorArteta,Red,"missed deploy",3,1,69,85,1,1.02011700787253,14650642
+peregrine7,Red,"low waves, low platoons",3,0,34,1,0,1.14928236353877,10276408
+Fleshstorm,Red,"missed deploy",3,1,75,23,6,1.17327975061718,13690993
+Locohoco,Red,"missed deploy",3,1,123,31,7,1.53426738369008,14966307
+Glove,Red,"low waves",2,0,0,15,1,0.427773326186137,13194263
+spudgun187 ren,Red,"low waves",2,0,0,33,0,0.534665167768956,13070066
+HedaLeia,Red,"low waves",2,0,23,9,0,0.661434292830659,13520483
+JAYBIRD,Red,"low waves",2,0,37,42,1,0.887951890072639,13662386
+DarthShuka,Red,"low waves",2,0,39,40,0,1.01452044050066,12110090
+Certified Taco Lover,Red,"low platoons",1,0,64,3,0,1.27105689258022,12425507
+Calaveylon Kwai,Red,"low platoons",1,0,59,1,1,1.274835205181,12114258
