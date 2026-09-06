@@ -1,18 +1,18 @@
 Name,RiskGroup,RiskReason,FollowUpPriority,MissedDeployments,TotalCombatWaves,PlatoonUnits,RogueActions,ExpectedRatio,TotalPower
-Chelli,Red,"low waves, low platoons",3,0,0,4,1,0.394466576111169,14332259
-Lannavo,Red,"low waves, low platoons",3,0,4,4,0,0.455650700710729,13579894
-Opus,Red,"missed deploy",3,1,48,36,0,0.673655622987509,15421344
-HedaLeia,Red,"missed deploy",3,1,36,8,1,0.699637519561481,13761533
-Zarckel,Red,"low waves",2,0,5,17,0,0.323709356713907,13974675
-Glove,Red,"low waves",2,0,5,41,1,0.492040028113892,13397484
-ZKylo Jiuter,Red,"low waves",2,0,19,33,0,0.64994013472524,13744743
-Trojan,Red,"low waves",2,0,23,6,0,0.704455004072534,11862374
-EtA Mr Bodia,Red,"low waves",2,0,21,53,0,0.728375732133679,12901649
-FollowerofRevan,Amber,"acceptable activity, below expected GP",1,0,39,5,0,0.684257575234245,14811184
-JAYBIRD,Amber,"acceptable activity, below expected GP",1,0,41,47,0,0.7709615456031,13784801
-3ATM3,Amber,"acceptable activity, below expected GP",1,0,38,5,0,0.820761351516363,14164577
-spudgun187 ren,Amber,"acceptable activity, below expected GP",1,0,32,21,0,0.843655411919621,13260114
-Certified Taco Lover,Red,"low platoons",1,0,46,0,1,0.945679128206779,12541909
-peregrine7,Red,"low platoons",1,0,25,4,0,1.15267260578834,10623396
-Everton Jabb,Red,"low platoons",1,0,68,3,0,1.35932166912719,12701118
-Calaveylon Kwai,Red,"low platoons",1,0,72,2,0,1.53222430773325,12330096
+Lannavo,Red,"low waves, low platoons",3,0,6,4,0,0.533798250129225,13579894
+JAYBIRD,Red,"missed deploy",3,1,47,48,0,0.694082267050834,13784801
+Opus,Red,"missed deploy",3,1,55,47,2,0.695817547894417,15421344
+Jacyn Amme,Red,"missed deploy",3,1,48,65,0,0.740847242012248,13847269
+HedaLeia,Red,"missed deploy",3,1,48,16,1,0.800562062565052,13761533
+peregrine7,Red,"low waves, low platoons",3,0,27,4,0,1.15936178564348,10623396
+Zarckel,Red,"low waves",2,0,5,17,0,0.415688033908718,13974675
+Chelli,Red,"low waves",2,0,0,6,1,0.460374243925722,14332259
+Glove,Red,"low waves",2,0,6,46,1,0.560873932658521,13397484
+FollowerofRevan,Red,"low waves",2,0,39,5,0,0.657046454586656,14811184
+ZKylo Jiuter,Red,"low waves",2,0,29,33,0,0.748625423890219,13744743
+Trojan,Red,"low waves",2,0,32,6,0,0.858830434341927,11862374
+EtA Mr Bodia,Red,"low waves",2,0,35,54,0,0.865408146663568,12901649
+3ATM3,Amber,"acceptable activity, below expected GP",1,0,43,7,0,0.802660848708174,14164577
+spudgun187 ren,Amber,"acceptable activity, below expected GP",1,0,40,21,0,0.874680218545702,13260114
+Certified Taco Lover,Red,"low platoons",1,0,56,0,1,0.997485714039844,12541909
+Calaveylon Kwai,Red,"low platoons",1,0,84,3,0,1.46373009745712,12330096
