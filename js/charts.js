@@ -1,0 +1,286 @@
+const COLORS = {
+  ink: '#292c27', muted: '#6a6e67', grid: '#dedfd9', green: '#187a45',
+  amber: '#b56909', red: '#be3b32', blue: '#286aa6', gold: '#c3941f', pale: '#f7f6f2',
+};
+
+export function drawQuadrant(canvas, players, waveThreshold) {
+  const chart = beginChart(canvas);
+  if (!chart || !players.length) return;
+  const { ctx, width, height } = chart;
+  const margin = { left: 58, right: 20, top: 18, bottom: 48 };
+  const plot = area(width, height, margin);
+  const ratios = players.map((player) => finite(player.ExpectedRatio));
+  const waves = players.map((player) => finite(player.TotalCombatWaves));
+  const xMax = Math.max(1.3, roundUp(Math.max(...ratios), .25));
+  const yMax = Math.max(waveThreshold + 8, roundUp(Math.max(...waves), 10));
+  drawGrid(ctx, plot, 5, 6, (value) => value.toFixed(1), (value) => Math.round(value), 0, xMax, 0, yMax);
+
+  const x = (value) => plot.left + (finite(value) / xMax) * plot.width;
+  const y = (value) => plot.bottom - (finite(value) / yMax) * plot.height;
+  dashedLine(ctx, x(1), plot.top, x(1), plot.bottom, COLORS.ink, [7, 6]);
+  dashedLine(ctx, plot.left, y(waveThreshold), plot.right, y(waveThreshold), COLORS.ink, [4, 5]);
+  drawSmallLabel(ctx, 'Expected GP', x(1) + 5, plot.top + 12);
+  drawSmallLabel(ctx, `Wave target ${waveThreshold}`, plot.right - 3, y(waveThreshold) - 7, 'right');
+
+  const labelNames = chooseLabels(players);
+  for (const player of players) {
+    const px = x(player.ExpectedRatio);
+    const py = y(player.TotalCombatWaves);
+    ctx.beginPath();
+    ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+    ctx.fillStyle = riskColor(player.RiskGroup);
+    ctx.globalAlpha = .82;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = '#343631';
+    ctx.lineWidth = .75;
+    ctx.stroke();
+    if (labelNames.has(player.Name)) {
+      ctx.fillStyle = COLORS.ink;
+      ctx.font = '11px Segoe UI, Arial';
+      ctx.textAlign = px > plot.right - 85 ? 'right' : 'left';
+      ctx.fillText(player.Name, px + (ctx.textAlign === 'right' ? -7 : 7), py - 6);
+    }
+  }
+  axisTitles(ctx, plot, 'Actual / expected contribution', 'Combat waves');
+}
+
+export function drawContribution(canvas, players) {
+  const ranked = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).slice(0, 20).reverse();
+  const chart = beginChart(canvas);
+  if (!chart || !ranked.length) return;
+  const { ctx, width, height } = chart;
+  const margin = { left: 116, right: 22, top: 18, bottom: 42 };
+  const plot = area(width, height, margin);
+  const rowHeight = plot.height / ranked.length;
+  const maxTotal = Math.max(...ranked.map((player) => player.PointScore + player.WaveScore + player.PlatoonScore));
+  const xMax = roundUp(maxTotal, .5);
+
+  for (let i = 0; i <= 5; i += 1) {
+    const value = xMax * i / 5;
+    const px = plot.left + plot.width * i / 5;
+    line(ctx, px, plot.top, px, plot.bottom, COLORS.grid, 1);
+    tick(ctx, value.toFixed(1), px, plot.bottom + 18, 'center');
+  }
+
+  const series = [
+    ['PointScore', COLORS.blue],
+    ['WaveScore', COLORS.green],
+    ['PlatoonScore', COLORS.gold],
+  ];
+  ranked.forEach((player, index) => {
+    const py = plot.bottom - rowHeight * (index + 1) + rowHeight * .17;
+    const barHeight = Math.max(7, rowHeight * .66);
+    let start = plot.left;
+    for (const [key, color] of series) {
+      const barWidth = finite(player[key]) / xMax * plot.width;
+      ctx.fillStyle = color;
+      ctx.fillRect(start, py, barWidth, barHeight);
+      start += barWidth;
+    }
+    ctx.font = '11px Segoe UI, Arial';
+    ctx.fillStyle = COLORS.ink;
+    ctx.textAlign = 'right';
+    ctx.fillText(player.Name, plot.left - 7, py + barHeight * .75);
+  });
+  ctx.textAlign = 'center';
+  ctx.fillStyle = COLORS.muted;
+  ctx.font = '12px Segoe UI, Arial';
+  ctx.fillText('Normalised contribution components', plot.left + plot.width / 2, height - 6);
+  drawLegend(ctx, [['Territory points', COLORS.blue], ['Combat activity', COLORS.green], ['Platoons', COLORS.gold]], plot.right, 10);
+}
+
+export function drawMomentum(canvas, phases) {
+  const chart = beginChart(canvas);
+  if (!chart || !phases.length) return;
+  const { ctx, width, height } = chart;
+  const margin = { left: 56, right: 52, top: 22, bottom: 48 };
+  const plot = area(width, height, margin);
+  const gap = phases.length > 1 ? plot.width / phases.length : plot.width;
+  const maxPoints = Math.max(...phases.map((phase) => phase.PointsMillions), 1);
+  const maxWaves = Math.max(...phases.map((phase) => phase.Waves), 1);
+  const maxMissed = Math.max(...phases.map((phase) => phase.MissedDeployments), 1);
+
+  for (let i = 0; i <= 4; i += 1) {
+    const py = plot.bottom - plot.height * i / 4;
+    line(ctx, plot.left, py, plot.right, py, COLORS.grid, 1);
+    tick(ctx, `${Math.round(maxPoints * i / 4)}M`, plot.left - 8, py + 4, 'right');
+  }
+  phases.forEach((phase, index) => {
+    const center = plot.left + gap * (index + .5);
+    const barWidth = Math.min(46, gap * .42);
+    const barHeight = phase.PointsMillions / maxPoints * plot.height;
+    ctx.fillStyle = 'rgba(40,106,166,.22)';
+    ctx.fillRect(center - barWidth / 2, plot.bottom - barHeight, barWidth, barHeight);
+    tick(ctx, `P${phase.Phase}`, center, plot.bottom + 20, 'center');
+  });
+
+  const points = phases.map((phase, index) => ({
+    x: plot.left + gap * (index + .5),
+    y: plot.bottom - phase.Waves / maxWaves * plot.height,
+  }));
+  const missed = phases.map((phase, index) => ({
+    x: plot.left + gap * (index + .5),
+    y: plot.bottom - phase.MissedDeployments / maxMissed * plot.height,
+  }));
+  drawSeries(ctx, points, COLORS.green, 'circle');
+  drawSeries(ctx, missed, COLORS.red, 'square');
+  ctx.save();
+  ctx.translate(14, plot.top + plot.height / 2);
+  ctx.rotate(-Math.PI / 2);
+  tick(ctx, 'Points (millions)', 0, 0, 'center');
+  ctx.restore();
+  drawLegend(ctx, [['Points', COLORS.blue], ['Waves', COLORS.green], ['Missed', COLORS.red]], plot.right, 10);
+}
+
+export function drawHistory(canvas, history, insights) {
+  const chart = beginChart(canvas);
+  if (!chart) return;
+  const { ctx, width, height } = chart;
+  if (!history.length || !insights.snapshotIds.length) {
+    emptyChart(ctx, width, height, 'Add or import completed TB runs to see trends.');
+    return;
+  }
+  const ids = insights.historyIds;
+  const focusNames = insights.watchlist.slice(0, 6).map((row) => row.Name);
+  if (!focusNames.length) focusNames.push(...insights.currentRows.slice(-6).map((row) => row.Name));
+  const margin = { left: 50, right: 20, top: 28, bottom: 58 };
+  const plot = area(width, height, margin);
+  const allScores = history
+    .filter((row) => ids.includes(String(row.SnapshotId)) && focusNames.includes(row.Name))
+    .map((row) => finite(row.ContributionScore));
+  const yMax = Math.max(.1, roundUp(Math.max(...allScores, .1), .1));
+  drawGrid(ctx, plot, 4, Math.max(1, ids.length - 1), (value) => value.toFixed(1), () => '', 0, Math.max(1, ids.length - 1), 0, yMax);
+  const palette = [COLORS.red, COLORS.amber, COLORS.blue, COLORS.green, '#74529a', '#62665f'];
+
+  focusNames.forEach((name, nameIndex) => {
+    const points = ids.map((id, index) => {
+      const row = history.find((item) => String(item.SnapshotId) === id && item.Name === name);
+      return row ? {
+        x: plot.left + (ids.length === 1 ? plot.width / 2 : index / (ids.length - 1) * plot.width),
+        y: plot.bottom - finite(row.ContributionScore) / yMax * plot.height,
+      } : null;
+    }).filter(Boolean);
+    drawSeries(ctx, points, palette[nameIndex % palette.length], 'circle');
+  });
+  ids.forEach((id, index) => {
+    const x = plot.left + (ids.length === 1 ? plot.width / 2 : index / (ids.length - 1) * plot.width);
+    tick(ctx, shortSnapshot(id), x, plot.bottom + 20, 'center');
+  });
+  drawLegend(ctx, focusNames.map((name, index) => [name, palette[index % palette.length]]), plot.right, 9);
+}
+
+function beginChart(canvas) {
+  if (!canvas) return null;
+  const rect = canvas.getBoundingClientRect();
+  const width = Math.max(280, Math.floor(rect.width || canvas.parentElement?.clientWidth || 600));
+  const height = Number(canvas.getAttribute('height')) || 400;
+  const ratio = Math.max(1, window.devicePixelRatio || 1);
+  canvas.width = Math.floor(width * ratio);
+  canvas.height = Math.floor(height * ratio);
+  canvas.style.height = `${height}px`;
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, width, height);
+  return { ctx, width, height };
+}
+
+function drawGrid(ctx, plot, xSteps, ySteps, xFormat, yFormat, xMin, xMax, yMin, yMax) {
+  for (let i = 0; i <= xSteps; i += 1) {
+    const px = plot.left + plot.width * i / xSteps;
+    line(ctx, px, plot.top, px, plot.bottom, COLORS.grid, 1);
+    tick(ctx, xFormat(xMin + (xMax - xMin) * i / xSteps), px, plot.bottom + 18, 'center');
+  }
+  for (let i = 0; i <= ySteps; i += 1) {
+    const py = plot.bottom - plot.height * i / ySteps;
+    line(ctx, plot.left, py, plot.right, py, COLORS.grid, 1);
+    tick(ctx, yFormat(yMin + (yMax - yMin) * i / ySteps), plot.left - 8, py + 4, 'right');
+  }
+}
+
+function drawSeries(ctx, points, color, marker) {
+  if (!points.length) return;
+  ctx.beginPath();
+  points.forEach((point, index) => index ? ctx.lineTo(point.x, point.y) : ctx.moveTo(point.x, point.y));
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2.3;
+  ctx.stroke();
+  points.forEach((point) => {
+    ctx.fillStyle = color;
+    if (marker === 'square') ctx.fillRect(point.x - 4, point.y - 4, 8, 8);
+    else {
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  });
+}
+
+function drawLegend(ctx, items, right, top) {
+  ctx.font = '10px Segoe UI, Arial';
+  let x = right;
+  [...items].reverse().forEach(([label, color]) => {
+    const width = ctx.measureText(label).width + 20;
+    x -= width;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, top + 1, 9, 9);
+    ctx.fillStyle = COLORS.muted;
+    ctx.textAlign = 'left';
+    ctx.fillText(label, x + 13, top + 10);
+  });
+}
+
+function axisTitles(ctx, plot, xTitle, yTitle) {
+  ctx.fillStyle = COLORS.muted;
+  ctx.font = '12px Segoe UI, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(xTitle, plot.left + plot.width / 2, plot.bottom + 39);
+  ctx.save();
+  ctx.translate(14, plot.top + plot.height / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText(yTitle, 0, 0);
+  ctx.restore();
+}
+
+function chooseLabels(players) {
+  const top = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).slice(0, 4);
+  const low = [...players].sort((a, b) => a.ExpectedRatio - b.ExpectedRatio).slice(0, 5);
+  const follow = [...players].sort((a, b) => b.FollowUpPriority - a.FollowUpPriority).slice(0, 5);
+  return new Set([...top, ...low, ...follow].map((player) => player.Name));
+}
+
+function shortSnapshot(id) {
+  const match = String(id).match(/_(\d+)pts_(\d+)waves/);
+  return match ? `${Math.round(Number(match[1]) / 1e6)}M` : String(id).slice(0, 12);
+}
+
+function emptyChart(ctx, width, height, message) {
+  ctx.fillStyle = COLORS.pale;
+  ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = COLORS.muted;
+  ctx.font = '14px Segoe UI, Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(message, width / 2, height / 2);
+}
+
+function area(width, height, margin) {
+  return { left: margin.left, right: width - margin.right, top: margin.top, bottom: height - margin.bottom,
+    width: width - margin.left - margin.right, height: height - margin.top - margin.bottom };
+}
+function line(ctx, x1, y1, x2, y2, color, width) {
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.stroke();
+}
+function dashedLine(ctx, x1, y1, x2, y2, color, dash) {
+  ctx.save(); ctx.setLineDash(dash); line(ctx, x1, y1, x2, y2, color, 1.4); ctx.restore();
+}
+function tick(ctx, text, x, y, align) {
+  ctx.fillStyle = COLORS.muted; ctx.font = '10px Segoe UI, Arial'; ctx.textAlign = align; ctx.fillText(text, x, y);
+}
+function drawSmallLabel(ctx, text, x, y, align = 'left') {
+  ctx.fillStyle = COLORS.ink; ctx.font = '10px Segoe UI, Arial'; ctx.textAlign = align; ctx.fillText(text, x, y);
+}
+function riskColor(risk) { return risk === 'Green' ? COLORS.green : risk === 'Amber' ? COLORS.amber : COLORS.red; }
+function finite(value) { return Number.isFinite(Number(value)) ? Number(value) : 0; }
+function roundUp(value, step) { return Math.ceil(value / step) * step; }
