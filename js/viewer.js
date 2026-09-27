@@ -1,4 +1,4 @@
-import { drawContribution, drawMomentum, drawQuadrant } from './charts.js';
+import { drawContribution, drawMomentum, drawQuadrant, setupExpandableCharts } from './charts.js';
 
 const elements = Object.fromEntries([...document.querySelectorAll('[id]')].map((node) => [node.id, node]));
 let result = null;
@@ -22,6 +22,7 @@ window.addEventListener('resize', () => {
 });
 
 loadReport();
+setupExpandableCharts(() => result);
 
 async function loadReport() {
   try {

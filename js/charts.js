@@ -22,10 +22,13 @@ export function drawQuadrant(canvas, players, waveThreshold) {
   drawSmallLabel(ctx, 'Expected GP', x(1) + 5, plot.top + 12);
   drawSmallLabel(ctx, `Wave target ${waveThreshold}`, plot.right - 3, y(waveThreshold) - 7, 'right');
 
-  const labelNames = chooseLabels(players);
-  for (const player of players) {
-    const px = x(player.ExpectedRatio);
-    const py = y(player.TotalCombatWaves);
+  const plotted = players.map((player) => ({
+    player,
+    x: x(player.ExpectedRatio),
+    y: y(player.TotalCombatWaves),
+  }));
+  for (const point of plotted) {
+    const { player, x: px, y: py } = point;
     ctx.beginPath();
     ctx.arc(px, py, 5.5, 0, Math.PI * 2);
     ctx.fillStyle = riskColor(player.RiskGroup);
@@ -35,18 +38,14 @@ export function drawQuadrant(canvas, players, waveThreshold) {
     ctx.strokeStyle = '#343631';
     ctx.lineWidth = .75;
     ctx.stroke();
-    if (labelNames.has(player.Name)) {
-      ctx.fillStyle = COLORS.ink;
-      ctx.font = '11px Segoe UI, Arial';
-      ctx.textAlign = px > plot.right - 85 ? 'right' : 'left';
-      ctx.fillText(player.Name, px + (ctx.textAlign === 'right' ? -7 : 7), py - 6);
-    }
   }
+  drawQuadrantLabels(ctx, plotted, plot);
   axisTitles(ctx, plot, 'Actual / expected contribution', 'Combat waves');
 }
 
 export function drawContribution(canvas, players) {
-  const ranked = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).slice(0, 20).reverse();
+  canvas.setAttribute('height', String(Math.max(560, players.length * 17 + 70)));
+  const ranked = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).reverse();
   const chart = beginChart(canvas);
   if (!chart || !ranked.length) return;
   const { ctx, width, height } = chart;
@@ -78,7 +77,7 @@ export function drawContribution(canvas, players) {
       ctx.fillRect(start, py, barWidth, barHeight);
       start += barWidth;
     }
-    ctx.font = '11px Segoe UI, Arial';
+    ctx.font = '10px Segoe UI, Arial';
     ctx.fillStyle = COLORS.ink;
     ctx.textAlign = 'right';
     ctx.fillText(player.Name, plot.left - 7, py + barHeight * .75);
@@ -170,6 +169,71 @@ export function drawHistory(canvas, history, insights) {
   drawLegend(ctx, focusNames.map((name, index) => [name, palette[index % palette.length]]), plot.right, 9);
 }
 
+export function setupExpandableCharts(getResult) {
+  const modal = document.getElementById('chartModal');
+  const modalCanvas = document.getElementById('expandedChart');
+  const modalTitle = document.getElementById('chartModalTitle');
+  const closeButton = document.getElementById('closeChartModal');
+  if (!modal || !modalCanvas || !modalTitle || !closeButton) return;
+
+  const titles = {
+    quadrant: 'Activity quadrant',
+    momentum: 'Phase momentum',
+    contribution: 'Contribution breakdown - all guild members',
+  };
+  let activeType = '';
+  let resizeTimer;
+
+  const renderExpanded = () => {
+    const result = getResult();
+    if (!result || !activeType) return;
+    if (activeType !== 'contribution') {
+      modalCanvas.setAttribute('height', String(Math.max(600, window.innerHeight - 125)));
+    }
+    if (activeType === 'quadrant') drawQuadrant(modalCanvas, result.players, result.waveThreshold);
+    if (activeType === 'momentum') drawMomentum(modalCanvas, result.phaseSummary);
+    if (activeType === 'contribution') drawContribution(modalCanvas, result.players);
+  };
+
+  const open = (type) => {
+    if (!getResult()) return;
+    activeType = type;
+    modalTitle.textContent = titles[type] ?? 'Chart';
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    modal.scrollTop = 0;
+    requestAnimationFrame(renderExpanded);
+    closeButton.focus();
+  };
+
+  const close = () => {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    activeType = '';
+  };
+
+  document.querySelectorAll('canvas[data-expand-chart]').forEach((canvas) => {
+    canvas.setAttribute('tabindex', '0');
+    canvas.setAttribute('role', 'button');
+    canvas.setAttribute('aria-label', `Open ${titles[canvas.dataset.expandChart] ?? 'chart'} full screen`);
+    canvas.addEventListener('click', () => open(canvas.dataset.expandChart));
+    canvas.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open(canvas.dataset.expandChart);
+      }
+    });
+  });
+  closeButton.addEventListener('click', close);
+  modal.addEventListener('click', (event) => { if (event.target === modal) close(); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !modal.hidden) close(); });
+  window.addEventListener('resize', () => {
+    if (modal.hidden) return;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(renderExpanded, 100);
+  });
+}
+
 function beginChart(canvas) {
   if (!canvas) return null;
   const rect = canvas.getBoundingClientRect();
@@ -244,11 +308,68 @@ function axisTitles(ctx, plot, xTitle, yTitle) {
   ctx.restore();
 }
 
-function chooseLabels(players) {
-  const top = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).slice(0, 4);
-  const low = [...players].sort((a, b) => a.ExpectedRatio - b.ExpectedRatio).slice(0, 5);
-  const follow = [...players].sort((a, b) => b.FollowUpPriority - a.FollowUpPriority).slice(0, 5);
-  return new Set([...top, ...low, ...follow].map((player) => player.Name));
+function drawQuadrantLabels(ctx, points, plot) {
+  ctx.font = '9px Segoe UI, Arial';
+  const placed = [];
+  const ordered = [...points].sort((a, b) => a.y - b.y || a.x - b.x);
+  const candidates = [
+    { dx: 8, dy: -6, align: 'left' }, { dx: 8, dy: 11, align: 'left' },
+    { dx: -8, dy: -6, align: 'right' }, { dx: -8, dy: 11, align: 'right' },
+    { dx: 12, dy: -17, align: 'left' }, { dx: -12, dy: 21, align: 'right' },
+  ];
+
+  for (const point of ordered) {
+    const name = point.player.Name;
+    const textWidth = ctx.measureText(name).width;
+    let chosen = null;
+    for (const candidate of candidates) {
+      const box = labelBox(point, candidate, textWidth, plot);
+      if (!placed.some((other) => boxesOverlap(box, other))) {
+        chosen = box;
+        break;
+      }
+    }
+    if (!chosen) {
+      const preferred = point.x > plot.left + plot.width * .68 ? candidates[2] : candidates[0];
+      chosen = labelBox(point, preferred, textWidth, plot);
+      for (let attempt = 0; attempt < 14 && placed.some((other) => boxesOverlap(chosen, other)); attempt += 1) {
+        const direction = attempt % 2 === 0 ? 1 : -1;
+        const distance = Math.ceil((attempt + 1) / 2) * 10;
+        chosen = { ...chosen, top: clamp(chosen.top + direction * distance, plot.top, plot.bottom - 11) };
+        chosen.baseline = chosen.top + 9;
+      }
+    }
+    placed.push(chosen);
+    ctx.beginPath();
+    ctx.moveTo(point.x, point.y);
+    ctx.lineTo(chosen.anchorX, chosen.baseline - 3);
+    ctx.strokeStyle = 'rgba(70,72,68,.32)';
+    ctx.lineWidth = .6;
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.78)';
+    ctx.fillRect(chosen.left - 1, chosen.top - 1, chosen.width + 2, 11);
+    ctx.fillStyle = COLORS.ink;
+    ctx.textAlign = chosen.align;
+    ctx.fillText(name, chosen.anchorX, chosen.baseline);
+  }
+}
+
+function labelBox(point, candidate, textWidth, plot) {
+  let align = candidate.align;
+  let anchorX = point.x + candidate.dx;
+  let left = align === 'left' ? anchorX : anchorX - textWidth;
+  if (left < plot.left) {
+    align = 'left'; anchorX = plot.left + 1; left = anchorX;
+  } else if (left + textWidth > plot.right) {
+    align = 'right'; anchorX = plot.right - 1; left = anchorX - textWidth;
+  }
+  const baseline = clamp(point.y + candidate.dy, plot.top + 9, plot.bottom - 2);
+  return { left, top: baseline - 9, width: textWidth, height: 10, baseline, anchorX, align };
+}
+
+function boxesOverlap(a, b) {
+  return a.left < b.left + b.width + 3 && a.left + a.width + 3 > b.left
+    && a.top < b.top + b.height + 2 && a.top + a.height + 2 > b.top;
 }
 
 function shortSnapshot(id) {
@@ -284,3 +405,4 @@ function drawSmallLabel(ctx, text, x, y, align = 'left') {
 function riskColor(risk) { return risk === 'Green' ? COLORS.green : risk === 'Amber' ? COLORS.amber : COLORS.red; }
 function finite(value) { return Number.isFinite(Number(value)) ? Number(value) : 0; }
 function roundUp(value, step) { return Math.ceil(value / step) * step; }
+function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }

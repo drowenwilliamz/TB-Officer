@@ -107,6 +107,7 @@ h3 { margin: 0; font-size: 18px; letter-spacing: 0; }
 .panel-heading { margin-bottom: 13px; }
 .panel-heading p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
 .chart-panel canvas { display: block; width: 100%; max-width: 100%; }
+.chart-panel canvas[data-expand-chart] { cursor: zoom-in; }
 .wide-panel { margin-bottom: 14px; }
 .legend { display: flex; gap: 12px; font-size: 11px; color: var(--muted); white-space: nowrap; }
 .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; }
@@ -137,6 +138,14 @@ tbody tr:hover td { background: #f0f4f1; }
 .history-main { display: grid; gap: 14px; }
 .history-status { min-height: 30px; margin: 3px 0 0; }
 .empty-state { color: var(--muted); padding: 24px 8px; text-align: center; }
+
+.chart-modal { position: fixed; inset: 0; z-index: 1000; background: rgba(18,20,17,.96); color: white; overflow: auto; padding: 18px; }
+.chart-modal[hidden] { display: none; }
+.chart-modal-toolbar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 1600px; margin: 0 auto; padding: 10px 0 15px; background: rgba(18,20,17,.96); }
+.chart-modal-toolbar h2 { font-size: 24px; }
+.chart-modal-body { max-width: 1600px; min-height: calc(100vh - 90px); margin: 0 auto; padding: 12px; background: white; border-radius: var(--radius); }
+.chart-modal-body canvas { display: block; width: 100%; max-width: 100%; }
+body.modal-open { overflow: hidden; }
 
 footer { max-width: 1440px; margin: 0 auto; padding: 20px 32px 32px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
 

@@ -51,16 +51,16 @@
               <div><h3>Activity quadrant</h3><p>Activity against contribution expected from GP</p></div>
               <div class="legend"><span class="green-dot">Green</span><span class="amber-dot">Watch</span><span class="red-dot">Follow up</span></div>
             </div>
-            <canvas id="quadrantChart" height="420"></canvas>
+            <canvas id="quadrantChart" data-expand-chart="quadrant" height="560" title="Open full-screen chart"></canvas>
           </article>
           <article class="panel chart-panel">
             <div class="panel-heading"><div><h3>Phase momentum</h3><p>Points, activity and missed deployments</p></div></div>
-            <canvas id="momentumChart" height="420"></canvas>
+            <canvas id="momentumChart" data-expand-chart="momentum" height="420" title="Open full-screen chart"></canvas>
           </article>
         </div>
         <article class="panel chart-panel wide-panel">
-          <div class="panel-heading"><div><h3>Contribution breakdown</h3><p>Points, combat activity and platoons for the leading contributors</p></div></div>
-          <canvas id="contributionChart" height="560"></canvas>
+          <div class="panel-heading"><div><h3>Contribution breakdown</h3><p>Points, combat activity and platoons for all 50 guild members</p></div></div>
+          <canvas id="contributionChart" data-expand-chart="contribution" height="560" title="Open full-screen chart"></canvas>
         </article>
         <div class="table-grid">
           <article class="panel">
@@ -98,6 +98,14 @@
       </section>
     </section>
   </main>
+
+  <div id="chartModal" class="chart-modal" hidden role="dialog" aria-modal="true" aria-labelledby="chartModalTitle">
+    <div class="chart-modal-toolbar">
+      <h2 id="chartModalTitle">Chart</h2>
+      <button id="closeChartModal" class="secondary-button" type="button">Back to report</button>
+    </div>
+    <div class="chart-modal-body"><canvas id="expandedChart" height="700"></canvas></div>
+  </div>
 
   <footer><span>Open Armed New Republic</span><span>Territory Battle performance report</span></footer>
   <script type="module" src="js/viewer.js"></script>

@@ -3,7 +3,7 @@ import {
   analyseTerritoryBattle, buildPerformanceInsights, detectPhases, makeSnapshot,
   mergeSnapshot, normaliseHistory,
 } from './analysis.js';
-import { drawContribution, drawHistory, drawMomentum, drawQuadrant } from './charts.js';
+import { drawContribution, drawHistory, drawMomentum, drawQuadrant, setupExpandableCharts } from './charts.js';
 
 const HISTORY_KEY = 'tb-analyser-performance-log-v1';
 const state = {
@@ -57,6 +57,7 @@ window.addEventListener('resize', () => {
 
 renderPhaseControls();
 renderHistory();
+setupExpandableCharts(() => state.result);
 
 function wireFileInput(input, type) {
   input.addEventListener('change', async () => {
