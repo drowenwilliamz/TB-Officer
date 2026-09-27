@@ -84,6 +84,8 @@ h3 { margin: 0; font-size: 18px; letter-spacing: 0; }
 .report-head h2 { font-size: 32px; }
 .muted { color: var(--muted); margin: 6px 0 0; }
 .report-actions, .panel-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.publish-action-group { text-align: right; }
+.publish-action-group small { display: block; max-width: 440px; margin-top: 7px; color: var(--muted); }
 .metric-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--line); background: var(--surface); }
 .metric { min-width: 0; padding: 15px 17px; border-right: 1px solid var(--line); }
 .metric:last-child { border-right: 0; }
@@ -160,6 +162,8 @@ footer { max-width: 1440px; margin: 0 auto; padding: 20px 32px 32px; border-top:
   .header-inner, .shell { padding-left: 18px; padding-right: 18px; }
   .header-inner, .report-head { display: block; }
   .privacy-note, .report-actions { margin-top: 18px; }
+  .publish-action-group { margin-top: 18px; text-align: left; }
+  .publish-action-group .report-actions { margin-top: 0; }
   .file-grid, .chart-grid, .table-grid, .history-layout { grid-template-columns: 1fr; }
   .panel-heading { display: block; }
   .legend { margin-top: 8px; flex-wrap: wrap; white-space: normal; }

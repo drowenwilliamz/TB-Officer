@@ -11,7 +11,8 @@ Open `publisher.html`, then:
 1. Add the TB activity export (`tb_data.csv`).
 2. Add the guild roster export (normally `Open Armed New RepublicFull.csv`; the filename is not important).
 3. Select a phase range and choose **Analyse TB**.
-4. Choose **Create site data** and replace `report-data.json` in the hosted repository with the downloaded file.
+4. Choose **Download publish file**.
+5. Replace `report-data.json` in the hosted repository with the downloaded file, then commit and push it using GitHub Desktop.
 
 Both source CSV files are processed locally in the browser. They are not published or uploaded by this app. Guild members only receive the derived values in `report-data.json`.
 

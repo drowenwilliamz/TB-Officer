@@ -340,6 +340,7 @@ function downloadSiteData() {
     report: state.result,
   };
   downloadText('report-data.json', JSON.stringify(payload, null, 2), 'application/json;charset=utf-8');
+  setMessage('Publish file downloaded. Replace TB-Officer/report-data.json with it, then commit and push in GitHub Desktop.');
 }
 
 function buildStandaloneReport(result) {
