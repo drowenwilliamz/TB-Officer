@@ -44,7 +44,7 @@ export function drawQuadrant(canvas, players, waveThreshold) {
 }
 
 export function drawContribution(canvas, players) {
-  canvas.setAttribute('height', String(Math.max(560, players.length * 17 + 70)));
+  setChartHeight(canvas, Math.max(560, players.length * 17 + 70));
   const ranked = [...players].sort((a, b) => b.ContributionScore - a.ContributionScore).reverse();
   const chart = beginChart(canvas);
   if (!chart || !ranked.length) return;
@@ -188,7 +188,7 @@ export function setupExpandableCharts(getResult) {
     const result = getResult();
     if (!result || !activeType) return;
     if (activeType !== 'contribution') {
-      modalCanvas.setAttribute('height', String(Math.max(600, window.innerHeight - 125)));
+      setChartHeight(modalCanvas, Math.max(600, window.innerHeight - 125));
     }
     if (activeType === 'quadrant') drawQuadrant(modalCanvas, result.players, result.waveThreshold);
     if (activeType === 'momentum') drawMomentum(modalCanvas, result.phaseSummary);
@@ -238,7 +238,8 @@ function beginChart(canvas) {
   if (!canvas) return null;
   const rect = canvas.getBoundingClientRect();
   const width = Math.max(280, Math.floor(rect.width || canvas.parentElement?.clientWidth || 600));
-  const height = Number(canvas.getAttribute('height')) || 400;
+  const height = Number(canvas.dataset.chartHeight || canvas.getAttribute('height')) || 400;
+  canvas.dataset.chartHeight = String(height);
   const ratio = Math.max(1, window.devicePixelRatio || 1);
   canvas.width = Math.floor(width * ratio);
   canvas.height = Math.floor(height * ratio);
@@ -249,6 +250,10 @@ function beginChart(canvas) {
   ctx.fillStyle = '#fff';
   ctx.fillRect(0, 0, width, height);
   return { ctx, width, height };
+}
+
+function setChartHeight(canvas, height) {
+  canvas.dataset.chartHeight = String(Math.round(height));
 }
 
 function drawGrid(ctx, plot, xSteps, ySteps, xFormat, yFormat, xMin, xMax, yMin, yMax) {
